@@ -1,0 +1,101 @@
+.caja-productos {
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    border:  0.5px solid lightgray;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+    
+.botones {
+    width: 10%;
+    align-items: flex-start;
+    flex-direction: column;
+    border-right: 0.5px solid lightgray;
+}
+.vista {
+    border-bottom:  0.5px solid lightgray;
+    width:50%;
+}
+
+.detalle-producto {
+    width: 40%;
+    font-family: 'ProximaNova-Regular', Arial, Helvetica;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    text-align: justify;
+}
+
+.precio-producto{
+    display: inline-block;
+    font-family: 'ProximaNova-Regular', Arial, Helvetica;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #0075D2;
+    padding-bottom: 30px;
+
+}
+
+.caja-cantidad {
+    display: flex;
+    width: 100px;
+    padding-bottom: 20px;
+}
+
+.boton-login {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.desc {
+    font-family: 'ProximaNova-Bold', Arial, Helvetica;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 12px;
+}
+.nombre-producto {
+    font-family: 'ProximaNova-Semibold', Arial, Helvetica;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #000;
+}
+
+.detalle-producto p {
+    size: 10vh;
+}
+
+@media  (max-width: 1200px){
+
+.caja-productos {
+    flex-direction: column;
+    
+}
+.botones {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.botones img {
+    width: 20%;
+}
+.vista {
+    width: 90%;
+    order:-1;
+}
+
+.detalle-producto {
+    width: 100%;
+    padding: 5px;
+}
+.caja-tarjetas {
+    width: 250px;
+    padding: 10px;
+    border-top: 0.5 solid lightgrey;
+    border-bottom: 0.5 solid lightgrey;
+}
+}

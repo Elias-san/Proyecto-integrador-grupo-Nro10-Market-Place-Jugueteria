@@ -1,8 +1,69 @@
-* {
-  box-sizing: border-box;
-}
 
 body {
   margin: 0;
   font-family: sans-serif;
 }
+
+* {
+  box-sizing: border-box;
+
+}
+
+  .main{
+    width: 100%;
+    margin-top: 100px;
+    margin-left: 15px;
+    margin-right: 5px;
+  
+  }
+   .categorias {
+    width: 98%;
+    overflow: hidden;
+    display: flex;
+    border: solid 1px lightgrey;
+    margin-top: 5px;
+    
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: white;
+    }
+  .nav-href a:hover{
+    background-color:lightcoral);
+  }
+
+  img {
+    display: flex;
+    width: 90%;
+  }
+
+  footer{
+    margin-top: 50px;
+    margin-left:auto;
+    margin-right: auto;
+    padding: 10px;
+    background-color:#00a8ff;
+    color: white;
+    font-size: 0.8em;
+  }
+  .caja-footer {
+    margin:auto;
+    display:flex;
+    align-content: space-between;
+    align-content: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
+
+  .caja-footer p {
+    width: 50%;
+  }
+
+  .caja-footer ul {
+    width: 90%;
+    padding: 5px;
+  }
+ 
+ .suscribir {
+   width: 90%;
+ }

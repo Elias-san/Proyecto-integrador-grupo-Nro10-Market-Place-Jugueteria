@@ -1,0 +1,26 @@
+.subtotales {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.caja-botones {
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 10px;;
+}
+.botones-compra{
+  width: 150px;
+  height: 50px;
+
+}
+
+.row form {
+  width: 100%;
+  padding-right: 10px;
+}
