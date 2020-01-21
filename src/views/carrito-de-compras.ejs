@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+     <%-include('./partials/head') %>
     <link rel="stylesheet" href="/css/app.css" >
     <link rel="stylesheet" href="/css/carrito.css" >
-    <link rel="stylesheet" href="/css/normalize.css" >
+  
     <title>Carrito de compras </title>
 
   
@@ -119,59 +115,8 @@
   </form>
 </section>
     <!---->
-    <footer class="container-fluid">
-        <section class="row">
-           <div class="caja-footer">
-              <article class="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <h5>Suscribete para recibir novedades</h5>
-                  <p>Actualizamos nuestros productos constantemente
-                    de acuerdo a las tendencias.
-                  </p>
-                  <form class="form-inline" align="left">
-                    <div class="form-group mb-2">
-                      <label for="staticEmail2" class="sr-only">Email</label>
-                      <input type="text" readonly class="form-control-plaintex outline-light" id="suscrubur" value="email@ejemplo.com">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-outline-light  mb-2">Suscribir</button>
-                  </form>
-              </article>
-              
 
-             
-              <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <ul class="list-unstyled text-small">
-                <li>+54 11 0000 0000</li>
-                <li>INFO@JUGUETERIA.COM</li>
-                <li>SUCURSAL</li>
-              </ul>
-              </div>
-
-              <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <ul class="list-unstyled text-small">
-                <li>INFORMACION SOBRE ENVIOS</li>
-                <li>DEVOLUCIONES</li>
-                <li>VENTAS EMPRESARIALES</li>
-              </ul>
-              </div>
-              <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <ul class="list-unstyled text-small">
-                <li>POLITICA DE PAGOS</li>
-                <li>TERMINOS Y CONDICIONES</li>
-                <li>POLITICA DE PRIVACIDAD</li>
-              </ul>
-              </div>
-
-              <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <ul class="list-unstyled text-small">
-                <li>SOBRE NOSOTROS</li>
-                <li>SUCURSALES</li>
-              </ul>
-              </div>
-            </div> <!--caja footer-->
-        </section>
-</footer>
-
+    <%- include('./partials/footer')%>
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

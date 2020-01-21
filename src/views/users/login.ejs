@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('../partials/head') %>
+    <title>Login</title>
+</head>
+<body>
+    <%- include('../partials/header')%>
+    <br>
+    <section class="container col-md-4 col-sm-4 col-lg-4 card">
+            <form>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Dirección de Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Clave</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+               
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <br>
+    </section>
+    <%- include('../partials/footer')%>
+</body>
+</html>

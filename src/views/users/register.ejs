@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%-include('../partials/head') %>
+    <title>Register</title>
+<body>
+    <%- include('../partials/header')%>
+    <section class="container main">
+        <h2>Regístrate</h2>
+        <div class="row">
+                
+                <form action="/users/register" method="POST" enctype="multipart/form-data">
+                        <div>
+                                <label>Nombre:</label>
+                                <input type="text" name="user_name">
+                        </div>
+                        <div>
+                                <label>Apellido:</label>
+                                <input type="text" name="user_surname">
+                        </div>
+                        <div>
+                                <label>Email:</label>
+                                <input type="email" name="user_email">
+                        </div>
+                        <div>
+                                <label>Usuario:</label>
+                                <input type="text" name="user">
+                        </div>
+                        <div>
+                                <label>Contraseña:</label>
+                                <input type="password" name="user_password">
+                        </div>
+                        <div>
+                                <label>Avatar:</label>
+                                <input type="file" name="user_avatar">
+                        </div>
+                        <div>
+                                <label for="genero">Género</label>
+                        <select name="genero" class="form-control" >
+                            <option selected>Seleccione</option>
+                            <option>Femenino</option>
+                            <option>Masculino</option>
+                            <option>Otro</option>
+                        </select>
+                        </div>
+                        <div>
+                                <label>Direccion:</label>
+                                <input type="text" name="user_address">
+                        </div>
+                        <div>
+                                <label>Movil:</label>
+                                <input type="text" name="movil">
+                        </div>
+                        <button type="submit">Registrarse</button>
+                </form>  
+           
+        </div> <!-- Row-->
+    </section>
+
+    <%- include('../partials/footer')%>
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" ></script>
+</body>
+</html>

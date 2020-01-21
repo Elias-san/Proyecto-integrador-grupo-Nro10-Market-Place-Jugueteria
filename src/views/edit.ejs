@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('./partials/head') %>
+    <link rel="stylesheet" href="/css/cargaproducto.css">
+    <title>Edit form</title>
+<body>
+    <%- include('./partials/header')%>
+        <h1>Edit Form</h1>
+
+        <section class="container main">
+            <div class="row ">
+              <form action="?_method=PUT" method="POST">
+                <div class="form-row descripcion">
+                
+                <div class="form-group ">
+                        <label for=""><strong>Describe tu producto</strong></label><br>
+                        <label for="titulo">Título</label><br>
+                        <input type="text" class="form-control" value=<%= productFinded.titulo %>>
+                        <br>
+                </div>
+                <label for="descripcion">Descripción:</label>
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                    </div>
+                    
+                    <textarea class="form-control" aria-label="With textarea" value=<%= productFinded.descripcion %> >
+                    </textarea>
+                  </div>
+                <br>
+    
+                <label for="descripcion">Edad:</label>
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                    </div>
+                    
+                    <input class="form-control" class="form-control" value=<%= productFinded.age %> >
+      
+                  </div>
+                <br>
+                <label for="descripcion">Genero:</label>
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                    </div>
+                    
+                    <input class="form-control" class="form-control" value=<%= productFinded.gender %> >
+      
+                  </div>
+                <br>
+               
+             
+                </div>
+                    
+                <button type="submit" class="btn btn-primary">Modificar</button>
+              
+              </form>
+              <%- include('./partials/footer')%>
+              <!-- Optional JavaScript -->
+                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                 <script src="/js/bootstrap.min.js" ></script>
+</body>
+</html>
