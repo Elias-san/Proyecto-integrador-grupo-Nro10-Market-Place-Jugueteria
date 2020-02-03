@@ -1,14 +1,29 @@
 [
  {
-  "id": 1,
-  "avatar": "1579486351847.JPG",
-  "user_name": "elias san",
-  "user_surname": "san martin",
-  "user_email": "elias@market.com",
+  "name": "Elias",
+  "surname": "San Martin",
   "user": "eliassan",
-  "user_password": "$2b$11$AHdbJRjTTJ0ZM.BsJz7ME.FFM5.EVKI5YVsAWWhKSV/r8bVkwlEyO",
-  "genero": "Masculino",
-  "user_address": "fdasfasdfas 34234, fasdf adf",
-  "movil": "333333333333333"
+  "email": "elias@market.com",
+  "password": "$2b$10$/3VGdj2p88PU/2N.kUYcuer3a3iPqrSKzbXCe05XwOCydfdd0TquK",
+  "country": "Arg",
+  "avatar": "elias-1580755336377.jpg"
+ },
+ {
+  "name": "Elias",
+  "surname": "San Martin",
+  "user": "elias-san",
+  "email": "eliassan@market.com",
+  "password": "$2b$10$wSdnXU1.v5qltEiSqnTs0ubXYekMSCbGmhjIYJSxhGkWRKxtML.L6",
+  "country": "Arg",
+  "avatar": "elias-1580756362734.jfif"
+ },
+ {
+  "name": "Elias",
+  "surname": "San Martin",
+  "user": "eliassan",
+  "email": "elias@market.com",
+  "password": "$2b$10$xXiWJ1SXXK5lsokfRIabu.ZfxiKdw2RbdzuUzTAvm3HHRHJTeNGhC",
+  "country": "Arg",
+  "avatar": "elias-1580757995108.JPG"
  }
 ]

@@ -1,31 +1,28 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-
-let diskStorage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, path.join(__dirname, '../../public/images/avatars'));
-	},
-	filename: function (req, file, cb) {
-		let finalName = Date.now() + path.extname(file.originalname);
-		cb(null, finalName);
-	}
-});
-
-let upload = multer({ storage: diskStorage })
 
 // ************ Controller Require ************
 const usersController = require('../controllers/userController');
 
+// *** Middleware***
+const registerValidations = require('../middlewares/registerValidator')
+const upload = require('../middlewares/uploadMiddleware')
+const guestMiddleware = require('../middlewares/guestMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware')
+
 /* GET to /users/register */
 router.get('/register', usersController.registerForm);
-
 /* POST to /users/register */
-router.post('/register', upload.single('user_avatar'), usersController.storeUser);
+router.post('/register', upload.single('user_avatar'),registerValidations, usersController.store);
 
-/* GET to /users/login */
-router.get('/login', usersController.loginForm);
+/*Formulario de login */
+router.get('/login', guestMiddleware, usersController.loginForm);
+
+/* Procesar login del usuario*/
+router.post('/login', usersController.login);
+
+router.get('/profile', authMiddleware, usersController.profile);
+router.get('/logout', usersController.logout);
 
 module.exports = router;

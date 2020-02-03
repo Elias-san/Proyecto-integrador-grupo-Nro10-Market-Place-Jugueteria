@@ -1,12 +1,16 @@
-# La retrospectiva Sprint 3
+# La retrospectiva Sprint 4
 
 1. Comenzar a hacer
     * Debemos comenzar a utilizar el control de versiones en equipo para integrar el trabajo colaborativo.
 2. Hacer más
+* Leer codigo con resoluciones a las funcionalidades a implementar para una mejor interpretación (papel lapiz,etc)
 * Feedback de equipo para las ideas del proyecto.Mejorar la experiencia de usuario y estética de la interface.
+* Practicar los temas explicados en los videos del Playground.
+* Solicitar asistencia a tiempo a profesores.
 3. Continuar haciendo
 * Horas de dedicación, para verter los nuevos contenidos aprendidos de manera rápida, en las consignas solicitadas. De manera de determinar si son las soluciones necesarias.
 4. Hacer menos
+* Dejar pendientes funcionalidades exigidas en las consignas del sprint
 * Complejizar las tareas consignas solicitadas, de manera de no desperdiciar el tiempo en detalles que no hacen a la solución principal.
 5. Dejar de hacer
 * Pruebas auxiliares sobre proyectos paralelos
