@@ -13,14 +13,7 @@
 			<div class="col-md-10">
 				<h2>Formulario de registro</h2>
 
-				<% if (typeof errors !== 'undefined') { %>
-				<ul>
-					<% for(let oneError of errors) { %>
-					<li class="text-danger"> <%= oneError.msg %> </li>
-					<% } %>
-				</ul>
-				<% } %>
-
+				
 				<form method="POST" action="/users/register" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-md-6">

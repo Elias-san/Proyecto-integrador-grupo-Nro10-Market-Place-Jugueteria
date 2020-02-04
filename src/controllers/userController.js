@@ -73,6 +73,26 @@ const controller = {
 		}
 	},
 	store: (req, res) => {		
+		const hasErrorGetMessage = (field, errors) => {
+			for (let oneError of errors) {
+				if (oneError.param == field) {
+					return oneError.msg;
+				}
+			}
+			return false;
+		}
+		
+		let errorsResult = validationResult(req);
+
+		if ( !errorsResult.isEmpty() ) {
+			return res.render('users/register', {
+				errors: errorsResult.array(),
+				hasErrorGetMessage,
+				oldData: req.body
+			});
+		} else {
+			return res.send('<h1>Ok, pasó las validaciones</h1>');
+		}
 		// Hash del password
 		req.body.password = bcrypt.hashSync(req.body.password, 10);
 

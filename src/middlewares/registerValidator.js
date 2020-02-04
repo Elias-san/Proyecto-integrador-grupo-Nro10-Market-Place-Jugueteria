@@ -23,7 +23,7 @@ module.exports = [
         .notEmpty().withMessage('Selecciona un pais').bail(),
 	
 		// validando campo avatar
-	check('avatar')
+	check('user_avatar')
 		.custom((value, { req }) => {
 			let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
 			if (typeof req.file == 'undefined') {
@@ -38,40 +38,3 @@ module.exports = [
 			return true;
 		})
 ];
-
-
-/*
-const path = require('path');
-const { check } = require ('express-validator');
-
-module.exports = [
-    check('user_name','El nombre es obligatorio').notEmpty(),
-    check('user_surname','El apellido es obligatorio').notEmpty(),
-    check('user_email')
-        .notEmpty().withMessage('El mail es obligatorio').isHalfWidth()
-        .isEmail().withMessage('Escribí un mail valido'),
-    check('user','El usuario es obligatorio'),
-    check('password')
-        .notEmpty().withMessage('Escribí una contraseña').isHalfWidth()
-        .isLength({ min: 5}).withMessage('La contraseña debe tener más de 5 caracteres'),
-    check('genero','El géenero es obligatorio').notEmpty(),
-    check('user_address').notEmpty,
-    check('movil').notEmpty,
-    check('user_avatar')
-		.custom((value, { req }) => {
-			let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-			if (typeof req.file == 'undefined') {
-				throw new Error('Elegí una imagen de perfil');
-			} else if (req.file.originalname) {
-				let fileExtension = path.extname(req.file.originalname);
-				let extensionIsOk = acceptedExtensions.includes(fileExtension);
-				if (!extensionIsOk) {
-					throw new Error('Los formatos válidos son JPG, JPEG y PNG');
-				}
-			}
-			return true;
-		})
-        
-
-    
-    ]*/

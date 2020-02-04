@@ -25,5 +25,39 @@
   "password": "$2b$10$xXiWJ1SXXK5lsokfRIabu.ZfxiKdw2RbdzuUzTAvm3HHRHJTeNGhC",
   "country": "Arg",
   "avatar": "elias-1580757995108.JPG"
+ },
+ {
+  "name": "Elias",
+  "surname": "",
+  "user": "",
+  "email": "",
+  "password": "$2b$10$m5BJqAeskjdQp1S7VbH61.ja8qSG92WH0argXGVtkb6AtVE1EVYFG",
+  "country": ""
+ },
+ {
+  "name": "Elias",
+  "surname": "",
+  "user": "",
+  "email": "",
+  "password": "$2b$10$CRuASCJbgZWE8s7ipihXN.qRsY.2j3cP.1PwfwZmay25QW0VhbEym",
+  "country": ""
+ },
+ {
+  "name": "Eliasss",
+  "surname": "San Martinss",
+  "user": "eliassanss",
+  "email": "elias@market.com",
+  "password": "$2b$10$O.9w/AkzZ1eo4quQfgdL0usyLQe8nK9q8vjLkuKuv.ktWLkj0wY/W",
+  "country": "Arg",
+  "avatar": "eliasss-1580775830697.JPG"
+ },
+ {
+  "name": "Eliasss",
+  "surname": "San Martinss",
+  "user": "eliassanss",
+  "email": "elias@market.com",
+  "password": "$2b$10$K4Kh.O7QCP2RhrHXu2kDxOPv/01TUizZXUDlVq/GGTjnJWsa4bGYm",
+  "country": "Arg",
+  "avatar": "eliasss-1580775985067.JPG"
  }
 ]
