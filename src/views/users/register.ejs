@@ -58,7 +58,7 @@
 							</div>
                                                 </div>
                                                 
-                                                <div class="col-md-6">
+                            <div class="col-md-6">
 							<div class="form-group">
 								<label><b>Usuario:</b></label>
 								<input 
@@ -87,10 +87,8 @@
 									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 										<%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
-									<% } %>
-									"
-									value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>"
-								>
+									<% } %>"
+									value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>">
 								<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 									<%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
@@ -107,9 +105,7 @@
 									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 										<%= hasErrorGetMessage('password', errors) ? 'is-invalid' : null %> 
-									<% } %>
-									"
-								>
+									<% } %>">
 								<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 									<%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
@@ -120,43 +116,31 @@
 					
 						<div class="col-md-6">
 							<div class="form-group">
-								<label><b>País de nacimiento:</b></label>
+								<label><b>Categoría de usuario:</b></label>
 								<select 
-									name="country" 
-                                                                        class="form-control
-                                                                        <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('country', errors) ? 'is-invalid' : null %> 
-									<% } %>
-                                                                        "
-								>
-									<option value="">Elegí un país</option>
+									name="categoria"  class="form-control <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('categoria', errors) ? 'is-invalid' : null %> 
+									<% } %>">
+									<option value="">Elegí categoría</option>
 									<%  
-										let countries = [
-											{code: 'Arg', name: 'Argentina'},
-											{code: 'Bol', name: 'Bolivia'},
-											{code: 'Bra', name: 'Brasil'},
-											{code: 'Col', name: 'Colombia'},
-											{code: 'Chi', name: 'Chile'},
-											{code: 'Ecu', name: 'Ecuador'},
-											{code: 'Par', name: 'Paraguay'},
-											{code: 'Per', name: 'Perú'},
-											{code: 'Uru', name: 'Uruguay'},
-											{code: 'Ven', name: 'Venezuela'},
-										];
-									%>
-									<% for (const oneCountry of countries) { %>
-										<option value="<%= oneCountry.code %>"> 
-											<%= oneCountry.name %> 
+										let categoria = [
+											{code: '1', name: 'Vendedor'},
+											{code: '2', name: 'Comprador'},
+										];%>
+									<% for (const oneCat of categoria) { %>
+										<option value="<%= oneCat.code %>"> 
+											<%= oneCat.name %> 
 										</option>
 									<% } %>
-                                                                </select>
-                                                                <i class="invalid-feedback">
+								 </select>
+								 <i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-									<%= hasErrorGetMessage('country', errors) ? hasErrorGetMessage('country', errors) : null %>
+									<%= hasErrorGetMessage('categoria', errors) ? hasErrorGetMessage('categoria', errors) : null %>
 									<% } %>
 								</i>
 							</div>
 						</div>
+						<!--
 						<div class="col-md-6">
 							<div class="form-group">
 								<label><b>Imagen de perfil:</b></label>
@@ -178,7 +162,7 @@
 									</i>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="col-12">
 							<button type="submit" class="btn btn-primary">Registrarse</button>
 						</div>

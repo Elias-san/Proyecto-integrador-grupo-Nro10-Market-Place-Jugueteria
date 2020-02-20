@@ -1,0 +1,16 @@
+<%- include('../partials/head')  %> 
+<h1>Listado de productos</h1>
+<% if (products.length ===0){%>
+    <h5>No hay productos para mostrar</h5>
+    <%} else {%>
+        <ul>
+            <%products.forEach(producto.nombre%> <br>
+            <li>
+            <b>Precio:</b> $<%producto)%><br>
+            <a href="/products/<%=producto.id%">ver detalle</a>
+            <hr>
+            </li>
+            <%})%>
+        </ul>
+        <%}%>
+<%- include('../partials/footer')  %>

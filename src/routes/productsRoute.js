@@ -22,11 +22,8 @@ const productsController = require('../controllers/productsController');
         router.get('/',productsController.index);
         //Formulario de carga
         router.get('/create',productsController.create);
-        router.get('/carrito-de-compras',productsController.carrito);
         //Acción de creación (a donde se envía el formulario)
-        router.post('/cargar-producto',upload.single('product_photo'),productsController.cargarProducto);
-         //Detalle de un producto particular
-         router.get('/:id',productsController.detalle);
+        router.post('/cargar-producto',upload.single('product_photo'),productsController.cargarProducto);        
         //formulario de edicion
         router.get('/:id/edit',productsController.editForm);
         //Accion de editar 
