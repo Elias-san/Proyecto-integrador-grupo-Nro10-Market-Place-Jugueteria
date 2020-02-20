@@ -8,8 +8,6 @@ const Usuarios = db.usuario;
 
 
 
-
-
 const productsController = {
 	index:(req,res)=>{
 		Productos
