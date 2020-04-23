@@ -1,0 +1,270 @@
+<title>Register</title>
+
+    <%-include('../partials/header') %>
+
+
+    <section class="container main">
+     
+        <!-- Register-Form -->
+	<div class="container" style="margin-top:30px; margin-bottom: 30px;">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<h2>Formulario de edición</h2>
+
+				
+		<form method="POST" action="/users/editar/<%= perfilLogueado.idusuario%>" enctype="multipart/form-data" id="registerForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Nombre:</b></label>
+								<input 
+									type="text" 
+									name="nombre" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('nombre', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.nombre : perfilLogueado.nombre %>"
+									data-name="nombre"
+								>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('nombre', errors) ? hasErrorGetMessage('nombre', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+                                                </div>
+                                                
+                            <div class="col-md-6">
+							<div class="form-group">
+								<label><b>Apellido:</b></label>
+								<input 
+									type="text" 
+									name="apellido" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('apellido', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.apellido : perfilLogueado.apellido %>"
+									data-name="apellido"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('apellido', errors) ? hasErrorGetMessage('apellido', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+                             </div>
+                                                
+                            <div class="col-md-6">
+							<div class="form-group">
+								<label><b>Usuario:</b></label>
+								<input 
+									type="text" 
+									name="usuario" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('usuario', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.user : perfilLogueado.usuario %>"
+									data-name="usuario"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('usuario', errors) ? hasErrorGetMessage('usuario', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Correo electrónico:</b></label>
+								<input 
+									type="text" 
+									name="email" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
+									<% } %>"
+									value="<%= typeof oldData !== 'undefined' ? oldData.email : perfilLogueado.email %>"
+									data-name="email">
+									<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
+									<% } %>
+									</i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Password:</b></label>
+								<input 
+									type="password" 
+									name="clave" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('clave', errors) ? 'is-invalid' : null %> 
+									<% } %>"
+									data-name="clave"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('clave', errors) ? hasErrorGetMessage('clave', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+						</div>
+					
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Categoría de usuario:</b></label>
+								<select 
+									name="categoria"  
+									class="form-control">
+									<option value="0">Comprador</option>
+								
+								 </select>
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+							<label><b>Dirección:</b></label>
+							<input 
+								type="text" 
+								name="direccion" 
+								class="form-control
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('direccion', errors) ? 'is-invalid' : null %> 
+								<% } %>
+								"
+								value="<%= typeof oldData !== 'undefined' ? oldData.direccion : perfilLogueado.direccion %>"
+								data-name="dirección"
+								>
+							<i class="invalid-feedback">
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('direccion', errors) ? hasErrorGetMessage('direccion', errors) : null %>
+								<% } %>
+							</i>
+						</div>
+						</div>
+						
+						<div class="col-md-6">
+						<div class="form-group">
+							<label><b>Localidad:</b></label>
+							<input 
+								type="text" 
+								name="localidad" 
+								class="form-control
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('localidad', errors) ? 'is-invalid' : null %> 
+								<% } %>
+								"
+								value="<%= typeof oldData !== 'undefined' ? oldData.localidad : perfilLogueado.localidad %>"
+								data-name="localidad"
+								>
+							<i class="invalid-feedback">
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('localidad', errors) ? hasErrorGetMessage('localidad', errors) : null %>
+								<% } %>
+							</i>
+						</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Provincia:</b></label>
+								<input 
+									type="text" 
+									name="provincia" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('provincia', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.provincia : perfilLogueado.provincia %>"
+									data-name="provincia"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('provincia', errors) ? hasErrorGetMessage('provincia', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><b>Telefono:</b></label>
+									<input 
+										type="text" 
+										name="telefono" 
+										class="form-control
+										<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+											<%= hasErrorGetMessage('telefono', errors) ? 'is-invalid' : null %> 
+										<% } %>
+										"
+										value="<%= typeof oldData !== 'undefined' ? oldData.telefono : perfilLogueado.telefono %>"
+										data-name="telefono"
+										>
+									<i class="invalid-feedback">
+										<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+											<%= hasErrorGetMessage('telefono', errors) ? hasErrorGetMessage('telefono', errors) : null %>
+										<% } %>
+									</i>
+								</div>
+							</div>
+							
+							
+							<!-- Campo Avatar -->
+										<div class="col-sm-6 mb-4">
+											<div class="form-group">
+												<label>Imagen de perfil:</label>
+												<!-- Preview Imagen -->
+												<div id="imgPreview"></div>
+												<input type="file" name="avatar" 
+												class="form-control form-control-file
+												<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+													<%= hasErrorGetMessage('avatar', errors) ? 'is-valid' : null %>
+													<% } %>
+												" data-name="imagen de perfil">
+												<i class="invalid-feedback">
+													<% if (typeof hasErrorGetMessage !== 'undefined') {%>
+													<%= hasErrorGetMessage('avatar', errors) ? 
+													hasErrorGetMessage('avatar', errors) : null %>
+													<% } %>
+												</i>
+											</div>
+										</div>
+									<!-- /Campo Avatar -->		
+									
+						
+							<br>
+							<br>
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary">Actualizar</button>
+						</div>
+					</div>
+			</form>
+			</div>
+		</div>
+        </div>
+        
+	
+    </section>
+
+	  <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+	<script src="/js/validator.min.js"></script>
+	<script src="/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" ></script>
+
+    <%- include('../partials/footer')%>
+
+    

@@ -1,0 +1,213 @@
+<title>Cargar Producto</title>
+<%- include('../partials/header') %>
+
+ 
+  <section class="container">
+   
+    <h1>Crear Producto</h1>
+ 
+    <form  enctype="multipart/form-data" action="/products/cargar-producto/" method="POST" id="cargaproducto">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01">Nombre</label>
+          <input 
+              type="text"  
+              name="nombre"
+              class="form-control
+              <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                <%= hasErrorGetMessage('nombre', errors) ? 'is-invalid' : null %> 
+              <% } %>"
+              value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>"
+              data-name="nombre">
+              <i class="invalid-feedback">
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                  <%= hasErrorGetMessage('nombre', errors) ? hasErrorGetMessage('nombre', errors) : null %>
+                <% } %>
+              </i>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Descripcion</label>
+          <input 
+            type="text" 
+            name="descripcion"
+            class="form-control
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('descripcion', errors) ? 'is-invalid' : null %> 
+            <% } %>"
+            value="<%= typeof oldData !== 'undefined' ? oldData.descripcion : null %>"
+            data-name="descripción">
+          <i class="invalid-feedback">
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('descripcion', errors) ? hasErrorGetMessage('descripcion', errors) : null %>
+            <% } %>
+          </i>
+            
+          
+        </div>
+        <div class="col-md-4 mb-3">
+          
+          <label>Edad</label>
+          <select 
+            class="custom-select" 
+            name="edadid"
+            data-name="edad"
+            >
+                                   
+            <% edades.forEach(unaEdad =>  {%>
+           
+              <option value="<%= unaEdad.idedad %>">
+                  <%= unaEdad.edad %>
+              </option>
+              
+            <%})%>
+          </select>
+         
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom04">Género</label>
+          <select 
+            name="genero"
+            class="custom-select
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('genero', errors) ? 'is-invalid' : null %> 
+            <% } %>"
+            data-name="genero"
+            >
+            <option selected disabled value="">Seleccione género</option>
+            <option>Niña</option>
+            <option>Niño</option>
+          </select>
+          <i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('genero', errors) ? hasErrorGetMessage('genero', errors) : null %>
+									<% } %>
+					</i>
+        </div>
+        
+        <div class="col-md-3 mb-3">
+          <label for="marca">Marca</label>
+          <input 
+            type="text"  
+            name="marca"
+            class="form-control
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('marca', errors) ? 'is-invalid' : null %> 
+            <% } %>
+            "
+            value="<%= typeof oldData !== 'undefined' ? oldData.marca : null %>"
+            data-name="marca"
+          >
+          <i class="invalid-feedback">
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('marca', errors) ? hasErrorGetMessage('marca', errors) : null %>
+            <% } %>
+          </i>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="stock">Stock</label>
+          <input type="text"  
+            name="stock"
+            class="form-control
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('stock', errors) ? 'is-invalid' : null %> 
+            <% } %>"
+            value="<%= typeof oldData !== 'undefined' ? oldData.stock : null %>"
+            data-name="stock"
+            >
+            <i class="invalid-feedback">
+              <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                <%= hasErrorGetMessage('stock', errors) ? hasErrorGetMessage('stock', errors) : null %>
+              <% } %>
+            </i>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="precio">Precio</label>
+          <input type="text" 
+            name="precio"
+            class="form-control
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('precio', errors) ? 'is-invalid' : null %> 
+            <% } %>
+            "
+            value="<%= typeof oldData !== 'undefined' ? oldData.precio : null %>"
+            data-name="precio"
+            >
+            <i class="invalid-feedback">
+              <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                <%= hasErrorGetMessage('precio', errors) ? hasErrorGetMessage('precio', errors) : null %>
+              <% } %>
+            </i>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="categoria">Categoria</label>
+          <select 
+            required
+            name="categoriaid" 
+            class="custom-select
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('categoria', errors) ? 'is-invalid' : null %> 
+            <% } %>
+            "
+            value="<%= typeof oldData !== 'undefined' ? oldData.categoria : null %>"
+            data-name="categoria"
+            >
+            <option selected disabled value="">Seleccione categoria</option>
+            <% categoria.forEach(unaCategoria => {%>
+               
+                  <option value="<%=unaCategoria.idcategoria%>">
+                          <%= unaCategoria.nombre%>
+                  </option>
+              
+          
+            <%})%>
+          </select>
+          <i class="invalid-feedback">
+            <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+              <%= hasErrorGetMessage('categoria', errors) ? hasErrorGetMessage('categoria', errors) : null %>
+            <% } %>
+          </i>
+        </div>
+        
+          <!-- Campo imagen producto -->
+          <div class="col-sm-6 mb-4">
+            <div class="form-group">
+              <label>Imagen de producto:</label>
+              <!-- Preview Imagen -->
+              <div id="imgPreview"></div>
+              <input type="file" name="url_imagen" 
+              class="form-control form-control-file
+              <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                <%= hasErrorGetMessage('url_imagen', errors) ? 'is-valid' : null %>
+                <% } %>
+              " data-name="imagen de producto">
+              <i class="invalid-feedback">
+                <% if (typeof hasErrorGetMessage !== 'undefined') {%>
+                <%= hasErrorGetMessage('url_imagen', errors) ? 
+                hasErrorGetMessage('url_imagen', errors) : null %>
+                <% } %>
+              </i>
+            </div>
+          </div>
+        <!-- /Campo Avatar -->	
+
+      </div>
+     
+      <button class="btn btn-primary" type="submit">Crear</button>
+    </form>
+  </section>
+ 
+	<script src="/js/validator.min.js"></script>
+  <script src="/js/validacarga.js"></script>
+  
+ <!-- Optional JavaScript -->
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="/js/bootstrap.min.js" ></script>
+
+<%- include('../partials/footer')%>

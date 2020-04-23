@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
@@ -16,29 +15,148 @@ const controller = {
 	loginForm: (req, res) => {
 		res.render('users/login');
 	},
-	login: (req,res)=>{
-		// Buscar usuario por email
-		let user = buscarUsuario(req.body.email);		
-
-		// Si encontramos al usuario
-		if (user != undefined) {
-			// Al ya tener al usuario, comparamos las contraseñas
-			if (bcrypt.compareSync(req.body.password, user.password)) {
-				// Setear en session el email del usuario
-				req.session.email = req.body.email;
-
-				// Setear la cookie
-				if (req.body.remember_user) {
-					res.cookie('userCookie', req.body.email, { maxAge: 60000 * 60 });
-				}
-		// Redireccionamos al visitante a su perfil
-				return res.redirect(`/users/profile/`);
-			} else {
-				res.send('Credenciales inválidas');
+	profile: (req, res) => {
+		Usuarios
+		.findByPk(req.session.usuarioId)
+		.then(perfilLogueado => {
+			if (perfilLogueado.categoria == 0){
+				res.render('users/userProfile', { perfilLogueado });
 			}
-		} else {
-			res.send('No hay usuarios registrados con ese email');
-		}
+				res.render('users/adminDashboard',{ perfilLogueado })
+		})
+	},
+	processLogin: (req,res)=>{
+			const hasErrorGetMessage = (field, errors) => {
+				for (let oneError of errors) {
+					if (oneError.param == field) {
+						return oneError.msg;
+					}
+				}
+				return false;
+			}
+
+			let errors = validationResult(req);
+			
+			if(!errors.isEmpty()) {
+				return res.render('users/login', {
+					errors: errors.array(),
+					hasErrorGetMessage,
+					oldData: req.body
+				});
+
+			} else {
+				// Buscar usuario por email
+				
+				Usuarios
+					.findOne({
+						where: {email: req.body.email}
+					})
+					// Validación info de usuario
+					.then(usuario => {
+						if(usuario != null){
+					 
+                       if (bcrypt.compareSync(req.body.clave, usuario.clave)) {
+						   // Setear en session el ID del usuario
+						   // para buscar luego por id
+                           req.session.usuarioId = usuario.idusuario;
+
+                           // Setear la cookie, en caso que cierre el navegador
+                           if (req.body.recordame) {
+                               res.cookie('recordame', usuario.idusuario, { maxAge: 60000 * 60 });
+                           }
+
+                           // Redireccionamos al perfil de usuario ok
+								return res.redirect('/users/profile/');
+							} else {
+								//si la clave esta mal vuelvo al login con mensaje
+								// de error
+								let noValido = 'La clave ingresada es incorrecta';
+								res.render('users/login', {message: noValido});
+							}
+                    } else {
+							//sino encuentro el usuario registrado vuelvo al login
+							let noValido = 'El usuario ingresado no está registrado';
+							res.render('users/login', {message: noValido});
+                    }
+                })
+	}
+	
+	},
+
+	editForm: (req,res) => {
+
+		//Chequear usuario existente
+		Usuarios
+		.findByPk(req.params.id)
+		.then(resultado =>{
+			if (resultado == null){
+				let error ="El usuario no existe";
+				return res.render('products/errores',{ error });
+			
+			} else {
+
+				res.render('users/editForm', { perfilLogueado: resultado });
+
+			}});
+			
+	},
+	edicion: (req,res) => {
+
+			console.log(req.body);
+			
+			const hasErrorGetMessage = (field, errors) => {
+				
+				for (let oneError of errors) {
+					if (oneError.param == field) {
+						
+						return oneError.msg;
+					}
+				}
+				return false;
+			}
+			
+			let errorsResult = validationResult(req);
+			
+
+			if ( !errorsResult.isEmpty() ) {
+				
+				return res.render('users/userProfile', {
+					errors: errorsResult.array(),
+					hasErrorGetMessage,
+					oldData: req.body
+				})
+			}
+			
+			
+					// Hash del password
+					req.body.clave = bcrypt.hashSync(req.body.clave, 10);
+					
+					let avatar;
+					if (typeof req.file === 'undefined'){
+
+						avatar ='usuario.jpg'
+					} else {
+						avatar = req.file.filename;
+					}
+
+					// a la variable usuario le agrego avatar y lo que viene por body
+					let userUpdate = {
+						avatar: avatar,
+						...req.body,
+
+					};
+					
+					
+					Usuarios
+					.update({userUpdate},
+						{
+							where: {
+								idusuario: req.params.id
+							}
+						});
+							// ir al perfil
+							return res.redirect('/users/profile');
+						
 	},
 	store: (req, res) => {	
 			
@@ -57,59 +175,98 @@ const controller = {
 		
 
 		if ( !errorsResult.isEmpty() ) {
-			console.log(errorsResult);
+			
 			return res.render('users/register', {
 				errors: errorsResult.array(),
 				hasErrorGetMessage,
 				oldData: req.body
 			})
 		} 
+		
+		//
+		// Verificar sino está registado el mail o usuario
+		//
+		Usuarios
+                .findOne({
+                    where: {email: req.body.email}
+                })
+                // Validación info de usuario
+                .then(usuario => {
+                  if(usuario != null){
+					if (usuario.email == req.body.email){
+							let yaExiste = "El email ya está registrado";
+							res.render('users/register',{ message: yaExiste})
+						}
+					  if (usuario.usuario==req.body.usuario){
+							let yaExiste = "El nombre de usuario no está disponible";
+							res.render('users/register',{ message: yaExiste})
+					  	}
+					}
+				})
+				
+
 				// Hash del password
-				req.body.password = bcrypt.hashSync(req.body.password, 10);
-				/*
-				// Asignar el nombre final de la imagen
-				req.body.avatar = req.file.filename;
+				req.body.clave = bcrypt.hashSync(req.body.clave, 10);
+				
+				let avatar;
+				if (typeof req.file === 'undefined'){
 
-				// Guardar al usario y como la función retorna la data del usuario lo almacenamos en ela variable "user"
-				let user = storeUser(req.body);
-				*/
-				// Setear en session el email del usuario nuevo para auto loguearlo
-				console.log(req.body);
-				req.session.email = req.body.email;
+					avatar ='usuario.jpg'
+				} else {
+					avatar = req.file.filename;
+				}
 
-				// Setear la cookie para mantener al usuario logueado
-				res.cookie('userCookie', req.session.email, { maxAge: 60000 * 60 });
+				// a la variable usuario le agrego avatar y lo que viene por body
+				let userRegister = {
+					avatar: avatar,
+					...req.body,
 
-				//Insertar usuario
-
+				};
+				
 				
 				Usuarios
-				.create(req.body)
+				.create(userRegister)
 					.then(usuario => {
-						// Redirección al profile
-						//return res.redirect('/users/profile');
-						res.send(req.body);
+						req.session.usuarioId = Usuario.idusuario;
+
+						res.cookie('usuarioCookie',Usuario.idusuario,{maxAge:60000 * 60});
+						// ir al perfil
+						res.render('users/userProfile');
 					})
-					.catch(error => res.send(error));	
+				.catch(error => res.send(error));	
 
 		
 		
 	},// Store
-	
-		
-	
-	profile: (req, res) => {
-		let userLogged = req.session.email;
-		res.render('users/userProfile', { userLogged });
+	borrar: (req,res)=>{
+			Usuarios
+			.destroy({
+				where:{
+				idusuario: req.params.id
+			}
+			
+			});
+			
+			
+			res.redirect('/users/profile');
 	},
-	
+	listUser: (req,res)=>{
+		Usuarios
+			.findAll()
+			.then (usuarios =>{
+				return res.render('users/listadoUsuarios',{ usuarios: usuarios });
+			})
+			.catch(error => console.log(error))
+		
+	},
+			
 	logout: (req, res) => {
 		// Destruir la session
 		req.session.destroy();
 		// Destruir la cookie
 		res.cookie('userCookie', null, { maxAge: 1 });
 		
-		return res.redirect('/users/profile');
+		return res.redirect('/');
 	}
 };
 

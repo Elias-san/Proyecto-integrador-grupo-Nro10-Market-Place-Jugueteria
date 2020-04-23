@@ -1,0 +1,58 @@
+<title>Register</title>
+    <%-include('../partials/head') %>
+
+
+    <%- include('../partials/header-profile')%>
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <section class="container-fluid " >
+        <div class="row mt-3">
+         
+
+          <div class="col-12">
+            <div class="contenido">
+             
+                      <h1>Total de usuarios:  <span id="totalUsers"></span></h1>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Avatar</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                          </tr>
+                        </thead>
+                        <tbody id="userContent">
+                          <% usuarios.forEach(user => {%> 
+                            <tr>
+                              <td><%= user.idproducto %></td>
+                              <td><img  class="img-thumbnail" src="/images/users/<%=user.avatar%>" width="100px">
+                              <br><br>
+                                <div class="col-12">
+                                
+                                <a href="/users/editar/<%=user.idusuario%>" role="button" class="btn btn-secondary btn-sm">EDITAR</a>
+                                <form action="/users/borrar/<%=user.idusuario%>" method="post">
+                                  <button type="submit"  class="btn btn-danger btn-sm mt-2">BORRAR</button>
+                                </form>
+                                </div>
+                                </td>
+                              <td><%= user.nombre %></td>
+                              <td><%= user.apellido %></td>
+                              <td><%= user.usuario %></td>
+                              <td><%= user.email %></td>
+                              <%})%>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div> <!--contenido-->
+
+              </div>
+    </div> <!-- Row-->
+  </section>
+
+    <%- include('../partials/footer')%>
+
+ 
+     

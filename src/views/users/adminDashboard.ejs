@@ -1,0 +1,245 @@
+<title>Admin Dashboard</title>
+    <%-include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header-profile')%>
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <section class="container-fluid " >
+        <div class="row mt-3">
+          <div class=" col-sm-4 col-md-3 col-lg-3">
+            <div class="perfil ">
+              <img src="/images/users/<%= perfilLogueado.avatar %>" width="100%">
+              <div class="texto-perfil">
+                <p class="titulo-perfil" ><%= perfilLogueado.nombre %> ,<%= perfilLogueado.apellido %></p>
+                <p class="cuerpo-texto">Email: <%= perfilLogueado.email %></p>
+            </div>
+            <form action="/users/borrar/<%= perfilLogueado.idusuario %>" method="post">
+          
+          </form>
+            </div>
+          </div>
+
+          <div class="col-sm-8 col-md-9 col-lg-9">
+            <div class="contenido">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Perfil</a>
+                
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mis productos</a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                          <div class="row mt-4 ml-3">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label><b>Nombre:  </b> <%=perfilLogueado.nombre %></label>
+                              
+                            </div>
+                          </div>
+                                                              
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <label><b>Apellido:  </b><%= perfilLogueado.apellido %></label>
+                    
+                            </div>
+                            </div>
+                                                              
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <label><b>Usuario:</b> <%= perfilLogueado.usuario %></label>
+                      
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label><b>Correo electrónico:</b> <%= perfilLogueado.email %></label>
+                            
+                            </div>
+                          </div>
+                        
+                        
+                          <div class="col-md-6">
+                          <div class="form-group">
+                            <label><b>Dirección:</b> <%= perfilLogueado.direccion %></label>
+                            
+                          
+                          </div>
+                          </div>
+                          
+                          <div class="col-md-6">
+                          <div class="form-group">
+                            <label><b>Localidad:</b> <%= perfilLogueado.localidad %></label>
+                          
+                          </div>
+                          </div>
+              
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label><b>Provincia:</b> <%= perfilLogueado.provincia %></label>
+                            
+                            </div>
+                            </div>
+              
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label><b>Telefono:</b> <%= perfilLogueado.telefono %></label>
+                              
+                              </div>
+                            </div>
+                            
+                          
+              
+                            <br>
+                            <br>
+                          <div class="col-12">
+                            <a href="/users/editar/<%=perfilLogueado.idusuario%>">
+                            <button  class="btn btn-primary">Editar</button></a>
+                            <a href="/users/list">
+                              <button  class="btn btn-secondary">Usuarios</button></a>
+                            <a href="/products/crear">
+                              <button  class="btn btn-success">Cargar productos</button></a>
+                          </div>
+                        </div>
+
+
+              </div>
+             
+              <!-- Solapa de  USUARIOS-->
+              <div class="tab-pane fade col-md-9" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      <div class="container">
+                      <h1>Total de productos: <span id="totalUsers"></span></h1>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Avatar</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                          </tr>
+                        </thead>
+                        <tbody id="userContent">
+                        </tbody>
+                      </table>
+                    </div>
+
+              </div>
+                        <script>
+
+                          function cargarUsuarios(){
+                                    fetch('http://localhost:3001/api/users/')
+                        .then(response => response.json())
+                        .then(infor => {
+                          let users = infor.data;
+                          let totalUsr = document.querySelector('#totalUsers');
+                          totalUsr.innerText = users.total;
+                          
+                          let userTableTag = document.querySelector('#userContent');
+                          
+                          users.forEach(user => {
+                            userTableTag.innerHTML += `
+                              <tr>
+                                <td>${user.idproducto}</td>
+                                <td><img  class="img-thumbnail" src="/images/users/${producto.avatar}" width="50px"></td>
+                                <br>
+                                  <div class="col-12">
+                                  <a href="/user/detalle/${user.idusuario}"  role="button" class="btn btn-success btn-sm">VER MÁS</a>
+                                  <a href="/user/editar/${user.idusuario}" role="button" class="btn btn-secondary btn-sm">EDITAR</a>
+                                  <a href="/user/borrar/${user.idusuario}" role="button" class="btn btn-danger btn-sm">BORRAR</a>
+                                  </div>
+                                  </td>
+                                <td>${user.nombre}</td>
+                                <td>${user.apellido}</td>
+                                <td>${user.usuario}</td>
+                                
+                              </tr>
+                            `;
+                          });
+                        })
+                        .catch(error => console.log(error) || alert('No vino la data'));
+                      }
+              </script>
+      
+              <!-- Listado de productos publicados-->
+              <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                
+                <div class="container">
+                  <h5><strong>Total de productos:</strong> <span id="totalProductos"></span></h5>
+                  <h5><strong>Total mercaderia:</strong> <span id="totalMercaderia"></span></h5>
+                  <h5><strong>Valor total de stock: $ </strong><span id="valorTotal"></span></h8>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Marca</th>
+                        <th>Imagen</th>
+                      </tr>
+                    </thead>
+                    <tbody id="productContent">
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+              <!-- ----------------------------   -->
+            </div> <!-- nav-->
+          </div> <!-- Contenido -->
+          </div> <!-- Main -->
+           
+          <script>
+            fetch('http://localhost:3001/api/user/<%= perfilLogueado.idusuario %>')
+              .then(response => response.json())
+              .then(info => {
+                let productos = info.data;
+                let totalTag = document.querySelector('#totalProductos');
+                let totalMer = document.querySelector('#totalMercaderia');
+                let valorTotalTag = document.querySelector('#valorTotal');
+                totalTag.innerText = productos.length;
+                let totalStock=0;
+                let valorTotal=0;
+                let productsTableTag = document.querySelector('#productContent');
+                
+                productos.forEach(producto => {
+                  totalStock += producto.stock;
+                  valorTotal += parseInt(producto.precio);
+                  totalMer.innerText = totalStock;
+                  valorTotalTag.innerText = valorTotal;
+                  productsTableTag.innerHTML += `
+                    <tr>
+                      <td>${producto.idproducto}</td>
+                      <td>
+                        ${producto.nombre.slice(0, 80)} <br>
+                        <div class="col-12">
+                        <a href="/products/detalle/${producto.idproducto}"  role="button" class="btn btn-success btn-sm">VER MÁS</a>
+                        <a href="/products/editar/${producto.idproducto}" role="button" class="btn btn-secondary btn-sm">EDITAR</a>
+                        <form action="/products/borrar/${producto.idproducto}" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm">BORRAR</button>
+                        </form>
+                        
+                        </div>
+                        </td>
+                      <td>${producto.precio}...</td>
+                      <td>${producto.stock}</td>
+                      <td>${producto.marca}</td>
+                      <td><img  class="img-thumbnail" src="/images/productos/${producto.url_imagen}" width="50px"></td>
+                    </tr>
+                  `;
+                });
+              })
+              .catch(error => console.log(error) || alert('No vino la data'));
+
+          </script>
+    </div> <!-- Row-->
+  </section>
+
+    <%- include('../partials/footer')%>
+
+ 
+     

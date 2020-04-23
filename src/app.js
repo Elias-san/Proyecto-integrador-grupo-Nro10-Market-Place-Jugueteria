@@ -6,6 +6,7 @@ const logger = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
+const cartMiddleware = require('./middlewares/cartMiddleware');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -22,7 +23,8 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(userCookieMiddleware);
-
+// middleware carrito en session
+app.use(cartMiddleware);
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
 app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
@@ -31,11 +33,15 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
+
 const mainRouter = require('./routes/main');
 const productsRoutes = require('./routes/productsRoute');
 const usersRoutes = require('./routes/usersRoute');
+const apiRouter = require('./routes/api/apiRouter');
+const apiProductRouter = require('./routes/api/apiProductRouter');
 app.use('/', mainRouter);
 app.use('/products',productsRoutes);
+app.use('/api',apiRouter);
 app.use('/users',usersRoutes);
 
 const methodOverride = require('method-override');

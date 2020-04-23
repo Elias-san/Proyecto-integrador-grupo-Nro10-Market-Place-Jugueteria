@@ -1,8 +1,14 @@
 function authMiddleware (req, res, next) {
-	if (req.session.userId == undefined) {
-		return res.redirect('/users/login');
+	// Si el usuario esta logueado es autorizado
+	if (req.session.usuarioId != undefined) {
+		next();
+	} else{
+		let mustLogin = 'Debés estar logueado para acceder aquí';
+		res.render('users/login', {message: mustLogin});
+		//res.send('Esta pagina es solo para usuarios');
+
 	}
-	next();
+	
 }
 
 module.exports = authMiddleware;

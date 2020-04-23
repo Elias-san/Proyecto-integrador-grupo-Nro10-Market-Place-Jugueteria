@@ -1,0 +1,50 @@
+<title>Carrito de compras</title>
+<%- include('../partials/header') %>
+
+
+<div class="container mt-4">
+	
+		<h3>Carrito de compras  <%= %></h3>
+
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<th scope="col">Imagen</th>
+				<th scope="col">Producto</th>
+				<th scope="col">Precio</th>
+				<th scope="col">Cantidad</th>
+				<th scope="col">Subtotal</th>
+				<th scope="col">  </th>
+			</thead>
+			<tbody>
+				<% carrito.forEach( oneItem => {  %>
+				<tr>
+					<td> <img src="/images/productos/<%= oneItem.imagen %>" style="width: 50px; height: 50px;"> </td>
+					<td><%= oneItem.nombre %></td>
+					<td><%= oneItem.precio %></td>
+					<td><%= oneItem.cantidad %></td>
+					<td><%= oneItem.precio * oneItem.cantidad %></td>
+					<td><a href="/products/deleteitemcart/<%=oneItem.id%>"><button  class="btn btn-danger">X</button></a></td>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+		
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 carrito2">
+				<a href="/products/finishcart"><button type="submit" class="btn btn-danger">Finalizar compra</button></a>
+				<a href="/products/"><button  class="btn btn-success">Continuar compra</button></a>
+				<a href="/products/emptycart"><button  class="btn btn-secondary">Vaciar carrito</button></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+ <!-- Optional JavaScript -->
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="/js/bootstrap.min.js" ></script>
+
+<%- include('../partials/footer')%>

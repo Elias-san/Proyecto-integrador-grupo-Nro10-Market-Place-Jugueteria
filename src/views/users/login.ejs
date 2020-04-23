@@ -1,27 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%-include('../partials/head') %>
     <title>Login</title>
-</head>
-<body>
-    <%- include('../partials/header')%>
+    <%-include('../partials/header') %>
+
     <br>
     <section class="container col-md-4 col-sm-4 col-lg-4 card">
+            <h6 class="text-danger">
+                <% if (typeof message !== 'undefined') { %>
+                    <p><%= message %></p>
+                
+                <% } %>
+
+            </h6>
             <form method="POST" action="/users/login">
+                
                 <div class="form-group">
                 <label for="exampleInputEmail1">Dirección de Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
+                <% } %>
+                "
+                value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>" >
+
+                <i class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+                    <%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
+                    <% } %>
+                </i>
                 <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Clave</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                <label >Clave</label>
+                <input 
+									type="password" 
+									name="clave" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('clave', errors) ? 'is-invalid' : null %> 
+									<% } %>">
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('clave', errors) ? hasErrorGetMessage('clave', errors) : null %>
+									<% } %>
+								</i>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
+                            <input type="checkbox" class="form-check-input" name="recordame">Recordar mi usuario
                         </label>
                     </div>
                 </div>
@@ -31,5 +56,3 @@
             <br>
     </section>
     <%- include('../partials/footer')%>
-</body>
-</html>

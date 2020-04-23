@@ -1,12 +1,9 @@
 function userCookieMiddleware (req, res, next) {
-	res.locals.isLogged = false;
-
-	if (req.cookies.userCookie || req.session.userId) {		
-		req.session.userId = req.cookies.userCookie ? req.cookies.userCookie : req.session.userId;
-		res.locals.isLogged = true;
-	}
-
 	next();
-}
 
+	if (req.cookies.recordame != undefined &&
+		req.session.usuarioId == undefined){
+		req.session.usuarioId = req.cookies.recordame;
+		}
+	}
 module.exports = userCookieMiddleware;

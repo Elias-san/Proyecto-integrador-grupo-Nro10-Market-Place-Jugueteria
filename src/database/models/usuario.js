@@ -10,10 +10,13 @@ module.exports = (sequelize,dataTypes)=>{
         nombre:dataTypes.STRING,
         apellido:dataTypes.STRING,
         usuario:dataTypes.STRING,
+        avatar:dataTypes.STRING,
         categoria:dataTypes.INTEGER,
         email:dataTypes.STRING,
         clave:dataTypes.STRING,
         direccion:dataTypes.STRING,
+        localidad:dataTypes.STRING,
+        provincia:dataTypes.STRING,
         telefono:dataTypes.STRING,
     };
 

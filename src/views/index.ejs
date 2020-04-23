@@ -1,57 +1,66 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="/css/app.css" >
-    <link rel="stylesheet" href="/css/normalize.css" >
     <title>Marketplace Jugueteria</title>
 
-  </head>
-  <body>
-    
     <%- include('./partials/header')%>
-      <section class="container ">
-              <div class="row">
-               <article class="categorias col-12 col-md-3 ">
-                  <img src="/images/menu-muñecos-y-accesorios.jpg" alt="menu muñecos y accesorios">
+      <section class=" container-fluid mt-4">
+              <div class="row secciones">
+               <div class="categoriasV ">
+                  <a href="/products/categoria/13">
+                  <img class="img-fluid" src="/images/menu-muñecos-y-accesorios.jpg" alt="menu muñecos y accesorios">
+                  </a>
+               </div>
+               <div class="categoriasV ">
+                  <a href="/products/categoria/15">
+                  <img class="img-fluid" src="/images/menu-primera-infancia.jpg" alt="menu primera infancia">
+                  </a>
+               </div>
+               <div class="categoriasH ">
+                  <a href="/products/categoria/12">
+                  <img class="img-fluid" src="/images/menu-mochilas.jpg" alt="menu articulos para escuela">
+                  </a>
+               </div>
+              </div>
+               <!--
+               <article class="categoriasV col-12 col-md-3 col-sm-3 col-lg-3">
+                  <img class="img-fluid" src="/images/menu-muñecos-y-accesorios.jpg" alt="menu muñecos y accesorios">
                </article>
-               <article class="categorias col-12 col-md-3 ">
-                  <img src="/images/menu-primera-infancia.jpg" alt="menu primera infancia">
+               <article class="categoriasV col-12 col-md-3 col-sm-3 col-lg-3">
+                  <img class="img-fluid" src="/images/menu-primera-infancia.jpg" alt="menu primera infancia">
                </article>
-               <article class="categorias col-12 col-md-6 ">
-                  <img src="/images/menu-mochilas.jpg" alt="menu articulos para escuela">
-               </article>
+               <article class="categoriasH col-12 col-md-6 col-sm-6 col-lg-6">
+                  <img class="img-fluid" src="/images/menu-mochilas.jpg" alt="menu articulos para escuela">
+               </article>-->
 
-             </div> <!-- row-->
-
-            <div class="row">
-              <article class="categorias col-12 col-md-6 ">
-                  <img src="/images/menu-vehiculos-y-pistas.jpg" alt="menu vehiculos">
+               <div class="row secciones">
+                  <div class="categoriasH ">
+                     <a href="/products/categoria/3">
+                     <img class="img-fluid" src="/images/menu-vehiculos-y-pistas.jpg" alt="menu vehiculos">
+                     </a>
+                  </div>
+               <div class="categoriasV ">
+                  <a href="/products/categoria/9">
+                    <img class="img-fluid" src="/images/menu-juegos.jpg" alt="menu juegos de mesa">
+                  </a>
+               </div>
+               <div class="categoriasV ">
+                  <a href="/products/categoria/4">
+                  <img class="img-fluid" src="/images/menu-munecos-y-peluches.jpg" alt="menu muñecos y peluches">
+                  </a>
+               </div>
+               
+              
+               <!--
+              <article class="categoriasH col-12 col-md-6 col-sm-6">
+                  <img class="img-fluid" src="/images/menu-vehiculos-y-pistas.jpg" alt="menu vehiculos">
                </article>
-               <article class="categorias col-12 col-md-3 ">
-                  <img src="/images/menu-juegos.jpg" alt="menu juegos de mesa">
+               <article class="categoriasV col-12 col-md-3 col-sm-3 col-lg-3">
+                  <img class="img-fluid" src="/images/menu-juegos.jpg" alt="menu juegos de mesa">
                </article>
-               <article class="categorias col-12 col-md-3 ">
-                  <img src="/images/menu-munecos-y-peluches.jpg" alt="menu muñecos y peluches">
-               </article>
+               <article class="categoriasV col-12 col-md-3 col-sm-3 col-lg-3">
+                  <img class="img-fluid" src="/images/menu-munecos-y-peluches.jpg" alt="menu muñecos y peluches">
+               </article>-->
             </div> <!-- row-->
 
       </section>
       <!---->
      
-
-   
-      <%- include('./partials/footer')%>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="/js/bootstrap.min.js" ></script>
-  </body>
-</html>
+    <%- include('./partials/footer')%>

@@ -1,0 +1,30 @@
+<%- include('../partials/header')  %> 
+
+
+        <section class="container">
+            <% if (busqueda.length ===0){%>
+                <h4 class="mt-5">No hemos encontrados productos para la búsqueda <strong><%= consulta %></strong></h4>
+                <%} else {%>
+                  <h4 class="mt-5">Listado de productos encontrados para la búsqueda <strong><%= consulta %></strong></h4>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                <% busqueda.forEach(producto => {%> 
+                    
+                    <div class="card-group">
+                        <div class="producto card mr-3 shadow-sm p-3 mb-5 bg-white rounde">
+                            <img src="/images/productos/<%= producto.url_imagen %>" class="card-img" alt="...">
+                        <div class="card-body border-top">
+                            <h5 class="card-title"><%=producto.nombre%> </h5> 
+                        </div>
+                        <div class="card-footer " >
+                            <strong><p class="card-text text-center">$ <%= producto.precio%> .-</p></strong>
+                            <div class="text-center mt-2"><a  href="/products/detalle/<%=producto.idproducto%>" class="btn btn-success">Detalle</a></div>
+                        </div>
+                        </div>
+                    </div>
+                
+                <%})%>
+        </div>
+        </section>
+        <%}%>
+
+<%- include('../partials/footer')  %>

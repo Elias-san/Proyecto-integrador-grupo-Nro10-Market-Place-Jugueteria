@@ -1,0 +1,43 @@
+
+      <title>Detalle de <%= producto.nombre %></title>
+      <%- include('../partials/header') %>
+      
+      <section class="container w-75 mt-5">
+        <form action="/products/addcart/<%= producto.idproducto %>" METHOD="POST">
+          
+            <article >
+
+              <div class="card mb-3 shadow p-3 mb-5 bg-white rounded">
+                <div class="row no-gutters">
+                  <div class="col-md-4 ">
+                    <img src="/images/productos/<%= producto.url_imagen %>" class="card-img" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                  <form action="/products/addcart/<%=producto.idproducto %>" METHOD="POST">
+                    <div class="card-body">
+                      <h3 class="card-title font-weight-bold"><%= producto.nombre %></h3>
+                      <p class="font-weight-light"><%=producto.descripcion%></p>
+                      <h5 class="card-text mt-4">Precio: <strong>$ <%= producto.precio%>.-</h5></strong>
+                      
+                          <button type="submit" class="btn btn-danger mt-5 agregar-carrito">Agragar a carrito</button>
+                      </form>
+                      
+                      <a href="/products"<button type="button" class="btn btn-success mt-5">Seguir comprando</button></a>
+ 
+                    </div>
+                  </div>
+                </div>
+              </div>
+                                       
+          </form>
+                 
+      
+            </article>
+      </section>
+      
+
+      
+     
+      <script src="/js/carrito.js"></script>
+
+    <%- include('../partials/footer')%>

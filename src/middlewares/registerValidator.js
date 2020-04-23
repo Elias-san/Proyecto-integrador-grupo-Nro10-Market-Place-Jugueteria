@@ -3,11 +3,14 @@ const { check } = require('express-validator');
 
 module.exports = [
 	// validando campo nombre
-    check('name', 'El nombre es obligatorio').notEmpty(),
+	check('nombre')
+	.notEmpty().withMessage('El nombre es obligatorio').notEmpty(),
     // validando campo apellido
-    check('surname', 'El apellido es obligatorio').notEmpty(),
+	check('apellido')
+	.notEmpty().withMessage('El apellido es obligatorio').notEmpty(),
     // validando campo apellido
-    check('user', 'El usuario es obligatorio').notEmpty(),
+	check('usuario')
+	.notEmpty().withMessage('El usuario es obligatorio').notEmpty(),
 
 	// validando campo email
 	check('email')
@@ -15,15 +18,29 @@ module.exports = [
 		.isEmail().withMessage('Escribí un email válido'),
 
 	// validando campo password
-	check('password')
+	check('clave')
 		.notEmpty().withMessage('Escribí una contraseña').bail()
         .isLength({ min: 5 }).withMessage('La contraseña debe tener más de 5 letras'),
     
-    check('country')
-        .notEmpty().withMessage('Selecciona un pais').bail(),
+    check('categoria')
+		.notEmpty().withMessage('Selecciona una categoria').bail(),
+		
+	check('direccion')
+	.notEmpty().withMessage('Escribí una dirección').bail(),
 	
-		// validando campo avatar
-	check('user_avatar')
+	check('localidad')
+    .notEmpty().withMessage('Ingresá una localidad').bail(),
+	
+	check('provincia')
+	.notEmpty().withMessage('Ingresá una provincia').bail(),
+	
+	check('telefono')
+	.notEmpty().withMessage('Ingresá un telefono').bail()
+	.isNumeric().withMessage('Ingresá un telefono válido').bail(),
+	
+		
+	// validando campo avatar
+	check('avatar')
 		.custom((value, { req }) => {
 			let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
 			if (typeof req.file == 'undefined') {

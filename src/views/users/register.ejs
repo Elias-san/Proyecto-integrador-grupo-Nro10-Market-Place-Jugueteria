@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+<title>Register</title>
 
-    <%-include('../partials/head') %>
-    <title>Register</title>
-<body>
-    <%- include('../partials/header')%>
+    <%-include('../partials/header') %>
+
+
     <section class="container main">
      
         <!-- Register-Form -->
@@ -14,45 +12,25 @@
 				<h2>Formulario de registro</h2>
 
 				
-				<form method="POST" action="/users/register" enctype="multipart/form-data">
+		<form method="POST" action="/users/register" enctype="multipart/form-data" id="registerForm">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label><b>Nombre:</b></label>
 								<input 
 									type="text" 
-									name="name" 
+									name="nombre" 
 									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('name', errors) ? 'is-invalid' : null %> 
+										<%= hasErrorGetMessage('nombre', errors) ? 'is-invalid' : null %> 
 									<% } %>
 									"
-									value="<%= typeof oldData !== 'undefined' ? oldData.name : null %>"
+									value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>"
+									data-name="nombre"
 								>
 								<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('name', errors) ? hasErrorGetMessage('name', errors) : null %>
-									<% } %>
-								</i>
-							</div>
-                                                </div>
-                                                
-                                                <div class="col-md-6">
-							<div class="form-group">
-								<label><b>Apellido:</b></label>
-								<input 
-									type="text" 
-									name="surname" 
-									class="form-control
-									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('surname', errors) ? 'is-invalid' : null %> 
-									<% } %>
-									"
-									value="<%= typeof oldData !== 'undefined' ? oldData.surname : null %>"
-								>
-								<i class="invalid-feedback">
-									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('surname', errors) ? hasErrorGetMessage('surname', errors) : null %>
+										<%= hasErrorGetMessage('nombre', errors) ? hasErrorGetMessage('nombre', errors) : null %>
 									<% } %>
 								</i>
 							</div>
@@ -60,20 +38,43 @@
                                                 
                             <div class="col-md-6">
 							<div class="form-group">
+								<label><b>Apellido:</b></label>
+								<input 
+									type="text" 
+									name="apellido" 
+									class="form-control
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('apellido', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.apellido : null %>"
+									data-name="apellido"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('apellido', errors) ? hasErrorGetMessage('apellido', errors) : null %>
+									<% } %>
+								</i>
+							</div>
+                             </div>
+                                                
+                            <div class="col-md-6">
+							<div class="form-group">
 								<label><b>Usuario:</b></label>
 								<input 
 									type="text" 
-									name="user" 
+									name="usuario" 
 									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('user', errors) ? 'is-invalid' : null %> 
+										<%= hasErrorGetMessage('usuario', errors) ? 'is-invalid' : null %> 
 									<% } %>
 									"
 									value="<%= typeof oldData !== 'undefined' ? oldData.user : null %>"
-								>
+									data-name="usuario"
+									>
 								<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('user', errors) ? hasErrorGetMessage('user', errors) : null %>
+										<%= hasErrorGetMessage('usuario', errors) ? hasErrorGetMessage('usuario', errors) : null %>
 									<% } %>
 								</i>
 							</div>
@@ -88,12 +89,13 @@
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 										<%= hasErrorGetMessage('email', errors) ? 'is-invalid' : null %> 
 									<% } %>"
-									value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>">
-								<i class="invalid-feedback">
+									value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>"
+									data-name="email">
+									<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
 									<%= hasErrorGetMessage('email', errors) ? hasErrorGetMessage('email', errors) : null %>
 									<% } %>
-								</i>
+									</i>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -101,14 +103,16 @@
 								<label><b>Password:</b></label>
 								<input 
 									type="password" 
-									name="password" 
+									name="clave" 
 									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('password', errors) ? 'is-invalid' : null %> 
-									<% } %>">
+										<%= hasErrorGetMessage('clave', errors) ? 'is-invalid' : null %> 
+									<% } %>"
+									data-name="clave"
+									>
 								<i class="invalid-feedback">
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-									<%= hasErrorGetMessage('password', errors) ? hasErrorGetMessage('password', errors) : null %>
+									<%= hasErrorGetMessage('clave', errors) ? hasErrorGetMessage('clave', errors) : null %>
 									<% } %>
 								</i>
 							</div>
@@ -118,56 +122,139 @@
 							<div class="form-group">
 								<label><b>Categoría de usuario:</b></label>
 								<select 
-									name="categoria"  class="form-control <% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('categoria', errors) ? 'is-invalid' : null %> 
-									<% } %>">
-									<option value="">Elegí categoría</option>
-									<%  
-										let categoria = [
-											{code: '1', name: 'Vendedor'},
-											{code: '2', name: 'Comprador'},
-										];%>
-									<% for (const oneCat of categoria) { %>
-										<option value="<%= oneCat.code %>"> 
-											<%= oneCat.name %> 
-										</option>
-									<% } %>
+									name="categoria"  
+									class="form-control">
+									<option value="0">Comprador</option>
+								
 								 </select>
-								 <i class="invalid-feedback">
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+							<label><b>Dirección:</b></label>
+							<input 
+								type="text" 
+								name="direccion" 
+								class="form-control
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('direccion', errors) ? 'is-invalid' : null %> 
+								<% } %>
+								"
+								value="<%= typeof oldData !== 'undefined' ? oldData.direccion : null %>"
+								data-name="dirección"
+								>
+							<i class="invalid-feedback">
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('direccion', errors) ? hasErrorGetMessage('direccion', errors) : null %>
+								<% } %>
+							</i>
+						</div>
+						</div>
+						
+						<div class="col-md-6">
+						<div class="form-group">
+							<label><b>Localidad:</b></label>
+							<input 
+								type="text" 
+								name="localidad" 
+								class="form-control
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('localidad', errors) ? 'is-invalid' : null %> 
+								<% } %>
+								"
+								value="<%= typeof oldData !== 'undefined' ? oldData.localidad : null %>"
+								data-name="localidad"
+								>
+							<i class="invalid-feedback">
+								<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+									<%= hasErrorGetMessage('localidad', errors) ? hasErrorGetMessage('localidad', errors) : null %>
+								<% } %>
+							</i>
+						</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><b>Provincia:</b></label>
+								<input 
+									type="text" 
+									name="provincia" 
+									class="form-control
 									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-									<%= hasErrorGetMessage('categoria', errors) ? hasErrorGetMessage('categoria', errors) : null %>
+										<%= hasErrorGetMessage('provincia', errors) ? 'is-invalid' : null %> 
+									<% } %>
+									"
+									value="<%= typeof oldData !== 'undefined' ? oldData.provincia : null %>"
+									data-name="provincia"
+									>
+								<i class="invalid-feedback">
+									<% if (typeof hasErrorGetMessage !== 'undefined') { %>
+										<%= hasErrorGetMessage('provincia', errors) ? hasErrorGetMessage('provincia', errors) : null %>
 									<% } %>
 								</i>
 							</div>
-						</div>
-						<!--
-						<div class="col-md-6">
-							<div class="form-group">
-								<label><b>Imagen de perfil:</b></label>
-								<div class="custom-file">
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><b>Telefono:</b></label>
 									<input 
-										type="file" 
-										name="user_avatar"
-										class="custom-file-input
+										type="text" 
+										name="telefono" 
+										class="form-control
 										<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-											<%= hasErrorGetMessage('user_avatar', errors) ? 'is-invalid' : null %> 
+											<%= hasErrorGetMessage('telefono', errors) ? 'is-invalid' : null %> 
 										<% } %>
 										"
-									>
-									<label class="custom-file-label">Choose file...</label>
+										value="<%= typeof oldData !== 'undefined' ? oldData.telefono : null %>"
+										data-name="telefono"
+										>
 									<i class="invalid-feedback">
 										<% if (typeof hasErrorGetMessage !== 'undefined') { %>
-										<%= hasErrorGetMessage('user_avatar', errors) ? hasErrorGetMessage('user_avatar', errors) : null %>
+											<%= hasErrorGetMessage('telefono', errors) ? hasErrorGetMessage('telefono', errors) : null %>
 										<% } %>
 									</i>
 								</div>
 							</div>
-						</div> -->
+							
+							<!-- Campo Avatar -->
+							<div class="col-sm-6 mb-4">
+								<div class="form-group">
+									<label><b>Imagen de perfil:</b></label>
+									<!-- Preview Imagen -->
+									<div id="imgPreview">
+										<div class="custom-file">
+											<input 
+											  type="file" 
+											  name="avatar" 
+											  class="custom-file-input
+											  <% if (typeof hasErrorGetMessage !== 'undefined') { %>
+												<%= hasErrorGetMessage('avatar', errors) ? 'is-valid' : null %>
+												<% } %>"  
+											  data-name="imagen de producto" >
+											  <label class="custom-file-label">Elegi archivo...</label>
+											  <i class="invalid-feedback">
+												  <% if (typeof hasErrorGetMessage !== 'undefined') {%>
+												  <%= hasErrorGetMessage('avatar', errors) ? 
+												  hasErrorGetMessage('avatar', errors) : null %>
+												  <% } %>
+											  </i>
+											</div>
+
+									</div>
+									
+								</div>
+							</div>
+							<!-- /Campo Avatar -->
+
+							<br>
+							<br>
 						<div class="col-12">
 							<button type="submit" class="btn btn-primary">Registrarse</button>
 						</div>
 					</div>
-				</form>
+			</form>
 			</div>
 		</div>
         </div>
@@ -175,12 +262,15 @@
 	
     </section>
 
-    <%- include('../partials/footer')%>
-
-      <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	  <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+	<script src="/js/validator.min.js"></script>
+	<script src="/js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="/js/bootstrap.min.js" ></script>
-</body>
-</html>
+
+    <%- include('../partials/footer')%>
+
+    

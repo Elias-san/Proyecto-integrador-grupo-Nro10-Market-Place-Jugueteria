@@ -10,6 +10,7 @@ module.exports = (sequelize,dataTypes) =>{
         nombre:dataTypes.STRING,
         descripcion:dataTypes.STRING,
         usuarioid:dataTypes.INTEGER,
+        edadid:dataTypes.INTEGER,
         genero:dataTypes.STRING,
         marca:dataTypes.STRING,
         precio:dataTypes.DOUBLE,
@@ -24,9 +25,10 @@ module.exports = (sequelize,dataTypes) =>{
     };
 
     let Producto = sequelize.define(alias,cols,config);
-Producto.associate = (models)=>{
+    
+    Producto.associate = (models)=>{
     Producto.belongsTo(models.categorias,{
-        as: "categorias",
+        as: "categoria",
         foreignKey:"categoriaid",
         timestamps:false,
     })
@@ -36,7 +38,7 @@ Producto.associate = (models)=>{
         foreignKey:"edadid",
         timestamps:false,
     })
-
+/*
     Producto.belongsToMany(models.usuario,{
         as:"usuarios",
         through:"producto_usuario",
@@ -45,7 +47,7 @@ Producto.associate = (models)=>{
         timestamps:false,
     })
 
-    
+  */  
 };
 
 return Producto
